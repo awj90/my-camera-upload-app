@@ -1,0 +1,45 @@
+<div class="row" style="text-align: center">
+  <h1>Say cheese!</h1>
+
+  <div class="col-xs-12">
+    <webcam
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch"
+      [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      [imageQuality]="1"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+    <br />
+    <button class="btn btn-danger" (click)="triggerSnapshot()">Snap!</button>
+    <button class="btn btn-primary" (click)="toggleWebcam()">
+      Toggle Webcam
+    </button>
+    <br /><br />
+    <button
+      class="btn btn-primary"
+      (click)="showNextWebcam(true)"
+      [disabled]="!multipleWebcamsAvailable"
+    >
+      Next Webcam
+    </button>
+    <input
+      id="cameraSwitchCheckbox"
+      type="checkbox"
+      [(ngModel)]="allowCameraSwitch"
+    /><label for="cameraSwitchCheckbox">Allow Camera Switch</label> <br /><br />
+    DeviceId:
+    <input
+      id="deviceId"
+      type="text"
+      [(ngModel)]="deviceId"
+      style="width: 500px"
+    />
+    <button class="btn btn-info" (click)="showNextWebcam(deviceId)">
+      Activate
+    </button>
+  </div>
+</div>

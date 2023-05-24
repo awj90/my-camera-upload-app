@@ -1,0 +1,43 @@
+<div class="container center-it">
+  <div class="row">
+    <div class="col-xs-12">
+      <img [src]="webcamImageUrl" />
+    </div>
+  </div>
+</div>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <form class="form-group" [formGroup]="form" (submit)="process()">
+        <input
+          type="hidden"
+          formControlName="file"
+          [value]="webcamImageUrl"
+          #fileToUpload
+        />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Enter your comments"
+          formControlName="comments"
+        />
+        <br />
+        <button
+          class="btn btn-success btn-block"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Upload
+        </button>
+        <button
+          class="btn btn-secondary btn-block"
+          type="button"
+          [routerLink]="['../']"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

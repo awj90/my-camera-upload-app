@@ -1,0 +1,6 @@
+.center-it {
+    display: flex;
+    justify-content: center;
+    /* width: 100vw;
+    margin-top: 10vh; */
+  }
